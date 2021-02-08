@@ -12,28 +12,32 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class UserTableComponent implements OnInit {
 
   dataSource!: User[];
+  deletedUser: User;
   displayedColumns: string[] = ['id', 'name', 'action'];
-  
+
 
   constructor(private userService: UserService,
   private changeDetectorRef: ChangeDetectorRef,
-  private route: ActivatedRoute, 
+  private route: ActivatedRoute,
   private router: Router
-  ) { }
+  ) { this.deletedUser = new User()}
 
   ngOnInit(): void {
 	  this.userService.findAll().subscribe(dataSource => this.dataSource=dataSource)
 
 	}
-	
+
 	public delete(user: User): void {
 	  console.log(user);
-	 this.userService.delete(user);
+	 this.userService.delete(user).subscribe(deletedUser => this.deletedUser=deletedUser);
+	 console.log(this.deletedUser);
+	 //this.renderRows();
+
 	}
-	
+
 	openDialog(action: string, obj: object): void {
 		if (action == 'Delete') {
-			console.log
+			console.log("here we are")
 		}
 		console.log(action);
 		console.log(obj);
