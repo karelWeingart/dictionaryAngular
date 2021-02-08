@@ -1,0 +1,20 @@
+# Gradle
+.idea/**/gradle.xml
+.idea/**/libraries
+
+#maven
+.mvn/*
+lib/**/*.*
+target/**/*.*
+
+#DB files
+**/*.db
+
+#Eclipse
+.settings/**/*.*
+.project
+
+.idea/**/*.*
+dictionary.iml
+out/
+web/**/*.*
