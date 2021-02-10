@@ -6,8 +6,9 @@ import { UserAddDialogComponent } from './user-add-dialog/user-add-dialog.compon
 
 const routes: Routes = [
   { path: 'users', component: UserTableComponent },
-  { path: 'adduser', component: UserAddDialogComponent}
-  
+  { path: 'adduser', component: UserAddDialogComponent },
+  { path: 'user/:id/dictionaries', component: DictionaryTableComponent}
+
 ];
 
 @NgModule({

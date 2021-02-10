@@ -17,13 +17,15 @@ import { UserService } from './service/user-service.service';
 
 import { UserAddDialogComponent } from './user-add-dialog/user-add-dialog.component';
 import { UserTableComponent } from './user-table/user-table.component';
+import { DictionaryTableComponent } from './dictionary-table/dictionary-table.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserListComponent,
     UserAddDialogComponent,
-    UserTableComponent
+    UserTableComponent,
+    DictionaryTableComponent
   ],
   imports: [
     BrowserModule,

@@ -31,9 +31,27 @@ export class UserTableComponent implements OnInit {
 	  console.log(user);
 	 this.userService.delete(user).subscribe(deletedUser => this.deletedUser=deletedUser);
 	 console.log(this.deletedUser);
-	 //this.renderRows();
+	 //this.table.renderRows();
+	 this.changeDetectorRef.detectChanges();
+	 this.dataSource.length=0;
+	 //this.removeUser(user);
+	 this.userService.findAll().subscribe(dataSource => this.dataSource=dataSource)
+	 this.changeDetectorRef.detectChanges();
 
 	}
+
+	private removeUser(user: User): void {
+    for (var i =0; i<this.dataSource.length; i++)	{
+      if (this.dataSource[i].id === user.id) {
+        this.dataSource.splice(i,1);
+        console.log("removed user" + user)
+        let clone = this.dataSource;
+        this.dataSource = clone;
+        return;
+      }
+
+    }
+ }
 
 	openDialog(action: string, obj: object): void {
 		if (action == 'Delete') {
