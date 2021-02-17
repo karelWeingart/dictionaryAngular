@@ -5,22 +5,22 @@
 
     <!-- Id Column -->
     <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef> ID. </th>
-      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let element" routerLink="/user/{{element.id}}"> {{element.id}} </td>
     </ng-container>
 
     <!-- Name Column -->
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.userName}} </td>
+      <td mat-cell *matCellDef="let element" routerLink="/user/{{element.id}}"> {{element.userName}} </td>
     </ng-container>
 
     <!-- Action Column -->
     <ng-container matColumnDef="action">
       <th mat-header-cell *matHeaderCellDef> Action </th>
-      <td mat-cell *matCellDef="let element" class="action-link"> 
-        <a (click)="openDialog('Update',element)">Edit</a> | 
-        <a (click)="delete(element)">Delete</a>  
+      <td mat-cell *matCellDef="let element" class="action-link">
+        <a (click)="openDialog('Update',element)">Edit</a> |
+        <a (click)="delete(element)">Delete</a>
       </td>
     </ng-container>
 

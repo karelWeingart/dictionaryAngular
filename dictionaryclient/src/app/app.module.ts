@@ -14,10 +14,13 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserService } from './service/user-service.service';
+import { DictionaryService } from './service/dictionary.service'
 
 import { UserAddDialogComponent } from './user-add-dialog/user-add-dialog.component';
 import { UserTableComponent } from './user-table/user-table.component';
 import { DictionaryTableComponent } from './dictionary-table/dictionary-table.component';
+import { UserDetailComponent } from './user-detail/user-detail.component';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +28,8 @@ import { DictionaryTableComponent } from './dictionary-table/dictionary-table.co
     UserListComponent,
     UserAddDialogComponent,
     UserTableComponent,
-    DictionaryTableComponent
+    DictionaryTableComponent,
+    UserDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +43,7 @@ import { DictionaryTableComponent } from './dictionary-table/dictionary-table.co
     MatButtonModule,
     MatInputModule
   ],
-  providers: [UserService],
+  providers: [UserService, DictionaryService],
   bootstrap: [AppComponent],
   entryComponents: [UserAddDialogComponent]
 })
