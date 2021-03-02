@@ -20,6 +20,7 @@ import { UserAddDialogComponent } from './user-add-dialog/user-add-dialog.compon
 import { UserTableComponent } from './user-table/user-table.component';
 import { DictionaryTableComponent } from './dictionary-table/dictionary-table.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
+import { DictionaryDetailComponent } from './dictionary-detail/dictionary-detail.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
     UserAddDialogComponent,
     UserTableComponent,
     DictionaryTableComponent,
-    UserDetailComponent
+    UserDetailComponent,
+    DictionaryDetailComponent
   ],
   imports: [
     BrowserModule,

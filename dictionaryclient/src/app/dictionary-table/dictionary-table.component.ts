@@ -20,7 +20,8 @@ export class DictionaryTableComponent implements OnInit {
 
 
   constructor(private route: ActivatedRoute,
-              private dictionaryService: DictionaryService) { }
+              private dictionaryService: DictionaryService,
+              private router: Router) { }
 
   ngOnInit(): void {
         this.route.paramMap.subscribe((params: ParamMap) => {

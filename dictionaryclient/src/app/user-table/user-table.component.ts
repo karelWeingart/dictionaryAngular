@@ -55,7 +55,7 @@ export class UserTableComponent implements OnInit {
 
 	openDialog(action: string, obj: object): void {
 		if (action == 'Delete') {
-			console.log("here we are")
+			console.log("here we are");
 		}
 		console.log(action);
 		console.log(obj);

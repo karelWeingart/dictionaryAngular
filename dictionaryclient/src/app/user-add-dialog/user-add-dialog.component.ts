@@ -10,32 +10,33 @@ import { User } from '../model/user';
   styleUrls: ['./user-add-dialog.component.css']
 })
 export class UserAddDialogComponent implements OnInit {
-   
+
    user: User;
-  
+
   constructor(
     public dialogRef: MatDialogRef<UserAddDialogComponent>,
-	private route: ActivatedRoute, 
+	private route: ActivatedRoute,
     private router: Router,
     private userService: UserService
     ) {
 		this.user= new User();
-		
+
 	}
 
   onCancelClick(): void {
     this.dialogRef.close();
   }
-  
+
   onSaveClick(): void {
 	console.log(this.user.userName);
 	this.userService.save(this.user).subscribe(result => this.gotoUserList());
     this.dialogRef.close();
+    this.gotoUserList();
   }
 
   ngOnInit(): void {
   }
-  
+
   gotoUserList() {
     this.router.navigate(['/users']);
   }
