@@ -3,16 +3,10 @@ package cz.weingart.java.web.dictionary.lesson;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import cz.weingart.java.web.dictionary.userdictionaries.DictionaryItem;
+import cz.weingart.java.web.dictionary.userdictionaries.UserDictionary;
 
 @Entity
 @Table(name="lesson")
@@ -26,6 +20,20 @@ public class Lesson {
 	
 	@OneToMany(mappedBy = "lesson",cascade = CascadeType.ALL,orphanRemoval = true, fetch=FetchType.LAZY)
 	private List<DictionaryItem> dictionaryItems = new ArrayList<>();
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "userdictionary_id")
+	private UserDictionary dictionary;
+
+	public void setDictionary(UserDictionary dictionary) {
+		this.dictionary = dictionary;
+	}
+
+	public UserDictionary getDictionary() {
+		return dictionary;
+	}
+
+
 	
 	protected Lesson() {
 		

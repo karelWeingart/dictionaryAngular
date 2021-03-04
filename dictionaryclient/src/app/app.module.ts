@@ -21,6 +21,8 @@ import { UserTableComponent } from './user-table/user-table.component';
 import { DictionaryTableComponent } from './dictionary-table/dictionary-table.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { DictionaryDetailComponent } from './dictionary-detail/dictionary-detail.component';
+import { LessonAddDialogComponent } from './lesson-add-dialog/lesson-add-dialog.component';
+import { WordAddDialogComponent } from './word-add-dialog/word-add-dialog.component';
 
 
 @NgModule({
@@ -31,7 +33,9 @@ import { DictionaryDetailComponent } from './dictionary-detail/dictionary-detail
     UserTableComponent,
     DictionaryTableComponent,
     UserDetailComponent,
-    DictionaryDetailComponent
+    DictionaryDetailComponent,
+    LessonAddDialogComponent,
+    WordAddDialogComponent
   ],
   imports: [
     BrowserModule,

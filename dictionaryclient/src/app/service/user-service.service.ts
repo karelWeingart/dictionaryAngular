@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { User } from '../model/user';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import {Lesson} from "../model/lesson";
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
@@ -23,7 +24,7 @@ export class UserService {
     return this.http.get<User>(this.userUrl + '/' + id);
    }
 
-  public save(user: User) {
+  public save(user: User): Observable<User>{
     return this.http.post<User>(this.usersUrl, user);
   }
 

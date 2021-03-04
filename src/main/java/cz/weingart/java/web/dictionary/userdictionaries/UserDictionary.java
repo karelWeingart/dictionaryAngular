@@ -7,6 +7,7 @@ import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import cz.weingart.java.web.dictionary.lesson.Lesson;
 import cz.weingart.java.web.dictionary.user.User;
 
 @Entity
@@ -31,6 +32,10 @@ public class UserDictionary {
 
 	@OneToMany(mappedBy = "userDictionary",cascade = CascadeType.ALL,orphanRemoval = true,fetch = FetchType.LAZY)
 	private List<DictionaryItem> items = new ArrayList<>();
+
+	@OneToMany(mappedBy = "dictionary",cascade = CascadeType.ALL,orphanRemoval = true,fetch = FetchType.LAZY)
+	@JsonIgnore
+	private List<Lesson> lessons = new ArrayList<>();
 	
 	protected UserDictionary() {
 		

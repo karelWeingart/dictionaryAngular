@@ -13,10 +13,14 @@ export class DictionaryService {
 
   constructor(private http: HttpClient) {
     this.dictionariesBaseUrl = "http://localhost:8080/dictionary/user/";
-    this.dictionaryUrl = "";
+    this.dictionaryUrl = "http://localhost:8080/dictionary/dictionary/";
   }
 
   public findByUserId(userId: number): Observable<Userdictionary[]> {
        return this.http.get<Userdictionary[]>(this.dictionariesBaseUrl+userId + "/dictionaries");
+  }
+
+  public findById(dictId: number): Observable<Userdictionary> {
+    return this.http.get<Userdictionary>(this.dictionaryUrl+"/" + dictId);
   }
 }
