@@ -35,13 +35,24 @@ public class UserDictionaryController {
 
     }
 
+    @GetMapping("/dictionary/{id}")
+    public UserDictionary getDictionary(@PathVariable(value = "id") Long dictId) {
+        Optional<UserDictionary> opt = userDictionaryRepository.findById(dictId);
+        UserDictionary dict;
+        if (opt.isPresent()) {
+            dict =  opt.get();
+            return dict;
+        }
+        return null;
+    }
+
     @PostMapping("/dictionaries")
     void addDictionary(@RequestBody UserDictionary dictionary) {
         userDictionaryRepository.save(dictionary);
     }
 
     @DeleteMapping("/dictionaries/{id}")
-    UserDictionary deleteUser(@PathVariable(value = "id") Long dictionaryId) {
+    UserDictionary deleteDictionary(@PathVariable(value = "id") Long dictionaryId) {
         Optional<UserDictionary> opt = userDictionaryRepository.findById(dictionaryId);
         if (opt.isPresent()) {
             userDictionaryRepository.delete(opt.get());

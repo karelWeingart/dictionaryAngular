@@ -13,7 +13,7 @@ export class LessonService {
   private lessonUrl: string;
   constructor(private http: HttpClient) {
     this.lessonsBaseUrl = 'http://localhost:8080/dictionary/dictionary';
-    this.lessonUrl = 'http://localhost:8080/dictionary/lesson'
+    this.lessonUrl = 'http://localhost:8080/dictionary/lessons'
   }
 
   public findAllByDictionary(dictId: number): Observable<Lesson[]> {

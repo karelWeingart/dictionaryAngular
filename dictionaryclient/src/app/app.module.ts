@@ -23,6 +23,8 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
 import { DictionaryDetailComponent } from './dictionary-detail/dictionary-detail.component';
 import { LessonAddDialogComponent } from './lesson-add-dialog/lesson-add-dialog.component';
 import { WordAddDialogComponent } from './word-add-dialog/word-add-dialog.component';
+import { LessonsTableComponent } from './lessons-table/lessons-table.component';
+import { WordsTableComponent } from './words-table/words-table.component';
 
 
 @NgModule({
@@ -35,7 +37,9 @@ import { WordAddDialogComponent } from './word-add-dialog/word-add-dialog.compon
     UserDetailComponent,
     DictionaryDetailComponent,
     LessonAddDialogComponent,
-    WordAddDialogComponent
+    WordAddDialogComponent,
+    LessonsTableComponent,
+    WordsTableComponent
   ],
   imports: [
     BrowserModule,

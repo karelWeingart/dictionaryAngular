@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {MatDialogRef} from "@angular/material/dialog";
+import {Component, Inject, OnInit} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {ActivatedRoute, Router} from "@angular/router";
 import {LessonService} from "../service/lesson.service";
 import {Lesson} from "../model/lesson";
@@ -13,6 +13,7 @@ export class LessonAddDialogComponent implements OnInit {
 
   lesson: Lesson;
   constructor(
+    @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<LessonAddDialogComponent>,
     private route: ActivatedRoute,
     private router: Router,
@@ -28,12 +29,18 @@ export class LessonAddDialogComponent implements OnInit {
   }
 
   onSaveClick(): void {
-    //console.log(this.user.userName);
-    //this.userService.save(this.user).subscribe(result => this.gotoUserList());
+    console.log(this.lesson);
+    this.lessonService.save(this.lesson).subscribe(result => this.updateLessonTable());
     this.dialogRef.close();
     //this.gotoUserList();
   }
   ngOnInit(): void {
+
+    this.lesson.dictionary = this.data.dictionary;
+  }
+
+  updateLessonTable(): void {
+
   }
 
 }

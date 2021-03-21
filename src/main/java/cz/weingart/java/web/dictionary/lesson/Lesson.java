@@ -1,10 +1,13 @@
 package cz.weingart.java.web.dictionary.lesson;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import cz.weingart.java.web.dictionary.userdictionaries.DictionaryItem;
 import cz.weingart.java.web.dictionary.userdictionaries.UserDictionary;
 
@@ -16,14 +19,28 @@ public class Lesson {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 
-	private String lessonName;
-	
 	@OneToMany(mappedBy = "lesson",cascade = CascadeType.ALL,orphanRemoval = true, fetch=FetchType.LAZY)
+	@JsonIgnore
 	private List<DictionaryItem> dictionaryItems = new ArrayList<>();
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "userdictionary_id")
 	private UserDictionary dictionary;
+
+	private String lessonName;
+
+	@Column(name = "date_created", columnDefinition = "DATE")
+	private LocalDate dateCreated;
+
+	public LocalDate getDateCreated() {
+		return dateCreated;
+	}
+
+	public void setDateCreated(LocalDate dateCreated) {
+		this.dateCreated = dateCreated;
+	}
+
+
 
 	public void setDictionary(UserDictionary dictionary) {
 		this.dictionary = dictionary;
@@ -50,11 +67,11 @@ public class Lesson {
 		this.id = id;
 	}
 
-	public String getLesson() {
+	public String getLessonName() {
 		return lessonName;
 	}
 
-	public void setLesson(String lesson) {
+	public void setLessonName(String lesson) {
 		this.lessonName = lesson;
 	}
 
@@ -68,6 +85,6 @@ public class Lesson {
 
 	@Override
 	public String toString() {
-		return "Lesson [id=" + id + ", lesson=" + lessonName + ", dictionaryItems=" + dictionaryItems + "]";
+		return "Lesson [id=" + id + ", lessonName=" + lessonName + ", dictionaryItems=" + dictionaryItems + ", dictionary="+ dictionary +"]";
 	}
 }

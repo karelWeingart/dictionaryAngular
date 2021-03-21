@@ -21,6 +21,6 @@ export class DictionaryService {
   }
 
   public findById(dictId: number): Observable<Userdictionary> {
-    return this.http.get<Userdictionary>(this.dictionaryUrl+"/" + dictId);
+    return this.http.get<Userdictionary>(this.dictionaryUrl + dictId);
   }
 }

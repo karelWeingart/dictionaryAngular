@@ -1,8 +1,11 @@
+<h3>this is {{dictionary.dictionaryName}}</h3>
 <button id="renameDict" type="button" mat-raised-button (click)="1">
 Rename Dictionary</button>
-<button id="addLesson" type="button" mat-raised-button >
+<button id="addLesson" type="button" mat-raised-button (click)="openAddLessonDialog()">
   Add Lesson</button>
 <button id="addWord" type="button" mat-raised-button >
   Add Word</button>
 <button id="testYourself" type="button" mat-raised-button >
   Test Yourself!</button>
+<app-words-table></app-words-table>
+<app-lessons-table #lessonsTable [dictionaryId]="id"></app-lessons-table>
