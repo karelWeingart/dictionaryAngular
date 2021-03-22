@@ -1,18 +1,11 @@
 package cz.weingart.java.web.dictionary.userdictionaries;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import cz.weingart.java.web.dictionary.lesson.Lesson;
 import cz.weingart.java.web.dictionary.partofspeech.PartOfSpeech;
+
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "dictionary_entity")
@@ -41,6 +34,17 @@ public class DictionaryItem {
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="dictionary_id")
 	private UserDictionary dictionary;
+
+	@Column(name = "date_created", columnDefinition = "DATE")
+	private LocalDate dateCreated;
+
+	public LocalDate getDateCreated() {
+		return dateCreated;
+	}
+
+	public void setDateCreated(LocalDate dateCreated) {
+		this.dateCreated = dateCreated;
+	}
 
 	public Long getId() {
 		return id;

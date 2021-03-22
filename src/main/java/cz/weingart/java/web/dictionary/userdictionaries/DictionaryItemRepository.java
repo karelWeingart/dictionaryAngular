@@ -12,5 +12,6 @@ public interface DictionaryItemRepository extends CrudRepository<DictionaryItem,
 	public List<DictionaryItem> findDictionaryItemsByDictionary(UserDictionary dictionary);
 	public List<DictionaryItem> findDictioaryItemsByDictionaryAndLesson(UserDictionary dictionary, Lesson lesson);
 	public List<DictionaryItem> findDictioaryItemsByDictionaryAndPartOfSpeech(UserDictionary dictionary, PartOfSpeech partOfSpeech);
+	public List<DictionaryItem> findDictionaryItemsByLesson(Lesson lesson);
 	
 }
