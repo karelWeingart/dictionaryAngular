@@ -25,9 +25,12 @@ public class UserDictionary {
 	@JsonIgnore
     private User user;
 
+	@Transient
+	private Long userId;
+
 	@JsonGetter("userId")
 	public Long getUserId() {
-		return this.user.getId();
+		return this.userId;
 	}
 
 	@OneToMany(mappedBy = "userDictionary",cascade = CascadeType.ALL,orphanRemoval = true,fetch = FetchType.LAZY)

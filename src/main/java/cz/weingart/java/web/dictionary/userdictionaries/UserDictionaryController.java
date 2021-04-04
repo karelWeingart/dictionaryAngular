@@ -3,7 +3,9 @@ package cz.weingart.java.web.dictionary.userdictionaries;
 import cz.weingart.java.web.dictionary.user.User;
 import cz.weingart.java.web.dictionary.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
@@ -48,7 +50,15 @@ public class UserDictionaryController {
 
     @PostMapping("/dictionaries")
     void addDictionary(@RequestBody UserDictionary dictionary) {
-        userDictionaryRepository.save(dictionary);
+        System.out.println("is dictionary null "+ (dictionary == null));
+        Optional<User> opt = userRepository.findById(dictionary.getUserId());
+        if (opt.isPresent()) {
+            dictionary.setUser(opt.get());
+            userDictionaryRepository.save(dictionary);
+        } else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "invalid user id");
+        }
+
     }
 
     @DeleteMapping("/dictionaries/{id}")

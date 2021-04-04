@@ -21,7 +21,7 @@ export class LessonsTableComponent implements OnInit {
               private lessonService: LessonService) { }
 
   ngOnInit(): void {
-    this.lessonService.findAllByDictionary(this.dictionaryId).subscribe(dataSource => this.dataSource=dataSource)
+    this.refresh();
   }
 
   refresh(): void {

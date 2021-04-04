@@ -1,1 +1,42 @@
-<p #wordsTable >words-table works!</p>
+<table mat-table [dataSource]="dataSource" #wordstable class="my-table mat-elevation-z8">
+
+  <!--- Note that these columns can be defined in any order.
+      The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Id Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef>ID</th>
+    <td mat-cell *matCellDef="let element" > {{element.id}} </td>
+  </ng-container>
+
+  <!-- foreignLanguageWord Column -->
+  <ng-container matColumnDef="foreignLanguageWord">
+    <th mat-header-cell *matHeaderCellDef> Word </th>
+    <td mat-cell *matCellDef="let element" > {{element.foreignLanguageWord}} </td>
+  </ng-container>
+
+  <!-- nativeLanguageTranslation Column -->
+  <ng-container matColumnDef="nativeLanguageTranslation">
+    <th mat-header-cell *matHeaderCellDef> Native translation </th>
+    <td mat-cell *matCellDef="let element" > {{element.nativeLanguageTranslation}} </td>
+  </ng-container>
+
+  <!-- lesson.lessonName Column -->
+  <ng-container matColumnDef="lesson">
+    <th mat-header-cell *matHeaderCellDef> Lesson </th>
+    <td mat-cell *matCellDef="let element" > {{element.lesson.lessonName}} </td>
+  </ng-container>
+
+  <!-- Action Column -->
+  <ng-container matColumnDef="action">
+    <th mat-header-cell *matHeaderCellDef> Action </th>
+    <td mat-cell *matCellDef="let element" class="action-link">
+      <a>Edit</a> |
+
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+

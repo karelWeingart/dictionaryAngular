@@ -7,5 +7,5 @@ Rename Dictionary</button>
   Add Word</button>
 <button id="testYourself" type="button" mat-raised-button >
   Test Yourself!</button>
-<app-words-table></app-words-table>
+<app-words-table #wordsTable [dictionaryId]="id"></app-words-table>
 <app-lessons-table #lessonsTable [dictionaryId]="id"></app-lessons-table>

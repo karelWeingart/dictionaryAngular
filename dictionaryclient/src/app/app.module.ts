@@ -25,6 +25,7 @@ import { LessonAddDialogComponent } from './lesson-add-dialog/lesson-add-dialog.
 import { WordAddDialogComponent } from './word-add-dialog/word-add-dialog.component';
 import { LessonsTableComponent } from './lessons-table/lessons-table.component';
 import { WordsTableComponent } from './words-table/words-table.component';
+import { DictionaryAddDialogComponent } from './dictionary-add-dialog/dictionary-add-dialog.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { WordsTableComponent } from './words-table/words-table.component';
     LessonAddDialogComponent,
     WordAddDialogComponent,
     LessonsTableComponent,
-    WordsTableComponent
+    WordsTableComponent,
+    DictionaryAddDialogComponent
   ],
   imports: [
     BrowserModule,

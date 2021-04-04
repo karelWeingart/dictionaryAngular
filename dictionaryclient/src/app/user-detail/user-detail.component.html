@@ -1,3 +1,5 @@
+<button id="addDictionary" type="button" mat-raised-button (click)="openAddDictionaryDialog()">
+  Add Dictionary</button>
 <p>Hello {{ user.userName }}, here is list of your dictionaries</p>
-<app-dictionary-table>
+<app-dictionary-table #dictionariesTable>
 </app-dictionary-table>

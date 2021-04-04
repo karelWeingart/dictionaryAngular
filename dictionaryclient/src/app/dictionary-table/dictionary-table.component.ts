@@ -24,11 +24,15 @@ export class DictionaryTableComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit(): void {
-        this.route.paramMap.subscribe((params: ParamMap) => {
-           this.id = Number(params.get('id'));
-        });
+        this.refresh();
+  }
 
-     this.dictionaryService.findByUserId(this.id).subscribe(dataSource => this.dataSource=dataSource);
+  refresh(): void {
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      this.id = Number(params.get('id'));
+    });
+
+    this.dictionaryService.findByUserId(this.id).subscribe(dataSource => this.dataSource=dataSource);
   }
 
   openDialog(action: string, obj: object): void {

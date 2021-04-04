@@ -33,7 +33,7 @@ public class DictionaryApplication {
 	public CommandLineRunner demo(UserRepository repository,UserDictionaryRepository dictRepository, LessonRepository lessonRepository, PartOfSpeechRepository partRepository, DictionaryItemRepository itemRepository) {
 	return (args) -> {
 	      
-	      repository.save(new User("Mia"));
+	      /*repository.save(new User("Mia"));
 	      lessonRepository.save(new Lesson("test"));
 	      partRepository.save(new PartOfSpeech("podstatne jmeno"));
 	      
@@ -60,9 +60,9 @@ public class DictionaryApplication {
 	        
 	        
 	      }
-	      log.info("");
-	      //dictRepository.deleteAll();
-	      //repository.deleteAll();
+	      log.info("");*/
+	      dictRepository.deleteAll();
+	      repository.deleteAll();
 	      
 	    };
 	    
