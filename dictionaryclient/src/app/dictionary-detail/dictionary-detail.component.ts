@@ -6,6 +6,8 @@ import {MatDialog} from "@angular/material/dialog";
 import {LessonAddDialogComponent} from "../lesson-add-dialog/lesson-add-dialog.component";
 import {LessonsTableComponent} from "../lessons-table/lessons-table.component";
 import {WordsTableComponent} from "../words-table/words-table.component";
+import {Lesson} from "../model/lesson";
+import {WordAddDialogComponent} from "../word-add-dialog/word-add-dialog.component";
 
 @Component({
   selector: 'app-dictionary-detail',
@@ -16,6 +18,7 @@ export class DictionaryDetailComponent implements OnInit {
 
   dictionary!: Userdictionary;
   id!: number;
+  lessons!: Lesson[];
   @ViewChild('lessonsTable') lessonsTable!: LessonsTableComponent;
   @ViewChild('wordsTable') wordsTable!: WordsTableComponent;
 
@@ -26,20 +29,28 @@ export class DictionaryDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params: ParamMap) => {
-      console.log(params.get('id'));
-
       this.id = Number(params.get('id'));
-
     });
     this.dictionaryService.findById(this.id).subscribe(dictionary => this.dictionary=dictionary);
   }
 
   openAddLessonDialog():void {
     const dialogRef = this.dialog.open(LessonAddDialogComponent, {
-      width: '250px',
+      width: '300px',
       data: {dictionary: this.dictionary}
     }).afterClosed()
       .subscribe(() => this.refreshLessonsTable());
+
+  }
+
+  openAddWordDialog():void {
+    const dialogRef = this.dialog.open(WordAddDialogComponent, {
+      width: '300px',
+      data: {dictionary: this.dictionary,
+             lessons: this.lessons
+      }
+    }).afterClosed()
+      .subscribe(() => this.refreshWordsTable());
 
   }
 
@@ -47,4 +58,12 @@ export class DictionaryDetailComponent implements OnInit {
     this.lessonsTable.refresh();
   }
 
+  refreshLessons(lessonsFromTable: Lesson[]) {
+    this.lessons=lessonsFromTable;
+
+  }
+
+  private refreshWordsTable() {
+    this.wordsTable.refresh();
+  }
 }

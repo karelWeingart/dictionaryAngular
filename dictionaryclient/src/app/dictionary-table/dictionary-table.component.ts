@@ -30,9 +30,11 @@ export class DictionaryTableComponent implements OnInit {
   refresh(): void {
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.id = Number(params.get('id'));
+      console.log(this.id);
     });
 
     this.dictionaryService.findByUserId(this.id).subscribe(dataSource => this.dataSource=dataSource);
+    console.log(this.dataSource);
   }
 
   openDialog(action: string, obj: object): void {

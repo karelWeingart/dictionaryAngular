@@ -3,9 +3,9 @@
 Rename Dictionary</button>
 <button id="addLesson" type="button" mat-raised-button (click)="openAddLessonDialog()">
   Add Lesson</button>
-<button id="addWord" type="button" mat-raised-button >
+<button id="addWord" type="button" mat-raised-button (click)="openAddWordDialog()">
   Add Word</button>
 <button id="testYourself" type="button" mat-raised-button >
   Test Yourself!</button>
 <app-words-table #wordsTable [dictionaryId]="id"></app-words-table>
-<app-lessons-table #lessonsTable [dictionaryId]="id"></app-lessons-table>
+<app-lessons-table #lessonsTable [dictionaryId]="id" (lessonsEmitter)="refreshLessons($event)" ></app-lessons-table>

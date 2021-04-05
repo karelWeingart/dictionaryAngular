@@ -23,9 +23,14 @@ export class UserTableComponent implements OnInit {
   ) { this.deletedUser = new User()}
 
   ngOnInit(): void {
-	  this.userService.findAll().subscribe(dataSource => this.dataSource=dataSource)
+    this.refresh();
+  }
 
-	}
+
+
+	public refresh(): void {
+    this.userService.findAll().subscribe(dataSource => this.dataSource=dataSource);
+  }
 
 	public delete(user: User): void {
 	  console.log(user);

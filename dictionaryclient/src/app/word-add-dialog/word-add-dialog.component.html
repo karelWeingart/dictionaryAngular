@@ -1,1 +1,11 @@
-<p>word-add-dialog works!</p>
+<h1 mat-dialog-title>Add New Word</h1>
+<div mat-dialog-content>
+
+  <input matInput [(ngModel)]="word.foreignLanguageWord">
+  <input matInput [(ngModel)]="word.nativeLanguageTranslation">
+  <app-lessons-select [lessons]="data.lessons"></app-lessons-select>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancelClick()">Cancel</button>
+  <button mat-button (click)="onSaveClick()" cdkFocusInitial>Save</button>
+</div>

@@ -26,6 +26,8 @@ import { WordAddDialogComponent } from './word-add-dialog/word-add-dialog.compon
 import { LessonsTableComponent } from './lessons-table/lessons-table.component';
 import { WordsTableComponent } from './words-table/words-table.component';
 import { DictionaryAddDialogComponent } from './dictionary-add-dialog/dictionary-add-dialog.component';
+import {MatSelectModule} from "@angular/material/select";
+import { LessonsSelectComponent } from './lessons-select/lessons-select.component';
 
 
 @NgModule({
@@ -41,19 +43,21 @@ import { DictionaryAddDialogComponent } from './dictionary-add-dialog/dictionary
     WordAddDialogComponent,
     LessonsTableComponent,
     WordsTableComponent,
-    DictionaryAddDialogComponent
+    DictionaryAddDialogComponent,
+    LessonsSelectComponent
   ],
   imports: [
     BrowserModule,
-	BrowserAnimationsModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
-	HttpClientModule,
+    HttpClientModule,
     FormsModule,
-	MatDialogModule,
-	MatTableModule,
+    MatDialogModule,
+    MatTableModule,
     MatFormFieldModule,
     MatButtonModule,
-    MatInputModule
+    MatInputModule,
+    MatSelectModule
   ],
   providers: [UserService, DictionaryService],
   bootstrap: [AppComponent],
