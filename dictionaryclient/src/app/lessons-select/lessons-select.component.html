@@ -1,4 +1,3 @@
-<mat-select>
-  <mat-option>None</mat-option>
-  <mat-option *ngFor="let lesson of lessons" [value]="lesson.id">{{lesson.lessonName}}</mat-option>
+<mat-select (selectionChange)="onChange($event)">
+    <mat-option *ngFor="let lesson of lessons" [value]="lesson.id" >{{lesson.lessonName}}</mat-option>
 </mat-select>

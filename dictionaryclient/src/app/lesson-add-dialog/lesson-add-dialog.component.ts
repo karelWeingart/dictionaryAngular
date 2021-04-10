@@ -34,8 +34,8 @@ export class LessonAddDialogComponent implements OnInit {
     this.dialogRef.close();
     //this.gotoUserList();
   }
-  ngOnInit(): void {
 
+  ngOnInit(): void {
     this.lesson.dictionary = this.data.dictionary;
   }
 

@@ -8,6 +8,8 @@ import java.util.List;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnoreType;
 import cz.weingart.java.web.dictionary.userdictionaries.DictionaryItem;
 import cz.weingart.java.web.dictionary.userdictionaries.UserDictionary;
 
@@ -19,7 +21,7 @@ public class Lesson {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 
-	@OneToMany(mappedBy = "lesson",cascade = CascadeType.ALL,orphanRemoval = true, fetch=FetchType.LAZY)
+	@OneToMany(mappedBy = "lesson",cascade = CascadeType.ALL,orphanRemoval = true, fetch=FetchType.EAGER)
 	@JsonIgnore
 	private List<DictionaryItem> dictionaryItems = new ArrayList<>();
 

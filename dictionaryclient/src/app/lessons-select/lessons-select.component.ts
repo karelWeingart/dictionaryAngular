@@ -9,10 +9,22 @@ import {Lesson} from "../model/lesson";
 export class LessonsSelectComponent implements OnInit {
 
   @Input() lessons!: Lesson[];
-  constructor() { }
+  selectedId!: number;
+  constructor() {
+
+  }
 
   ngOnInit(): void {
 
+  }
+
+  onChange(selectedValue: any): void {
+    console.log(selectedValue);
+    this.selectedId = selectedValue.value;
+  }
+
+  getSelectedValue(): number {
+    return this.selectedId;
   }
 
 }
