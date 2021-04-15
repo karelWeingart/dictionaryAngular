@@ -45,7 +45,7 @@ export class DictionaryDetailComponent implements OnInit {
 
   openAddWordDialog():void {
     const dialogRef = this.dialog.open(WordAddDialogComponent, {
-      width: '300px',
+      width: '400px',
       data: {dictionary: this.dictionary,
              lessons: this.lessons
       }

@@ -46,9 +46,8 @@ export class WordAddDialogComponent implements OnInit {
     this.word.lesson = selectedLesson;
     this.word.dictionary = this.data.dictionary;
     this.wordsService.save(this.word).subscribe(result => this.updateWordTable());
-    this.nativeLanguageInput.value = '';
-    this.foreignLanguageInput.value = '';
-    this.nativeLanguageInput.ngOnChanges();
+
+
   }
 
   onCancelClick() {

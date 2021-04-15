@@ -1,12 +1,14 @@
 <h1 mat-dialog-title>Add New Word</h1>
 <div mat-dialog-content>
-
-  <input #foreignLanguageInput matInput [(ngModel)]="word.foreignLanguageWord">
-  <input #nativeLanguageInput matInput [(ngModel)]="word.nativeLanguageTranslation">
-  <app-lessons-select [lessons]="data.lessons" #lessonsSelect ></app-lessons-select>
+  <mat-label>Enter Foreign Word</mat-label><br />
+  <input matInput #foreignLanguageInput  [(ngModel)]="word.foreignLanguageWord" ><br />
+  <mat-label>Enter translation</mat-label><br />
+  <input matInput #nativeLanguageInput  [(ngModel)]="word.nativeLanguageTranslation" ><br />
+  <mat-label>Select Lesson</mat-label><br />
+  <app-lessons-select [lessons]="data.lessons" #lessonsSelect ></app-lessons-select><br />
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onCancelClick()">Cancel</button>
-  <button mat-button (click)="onSaveAddAnotherClick()" cdkFocusInitial>Save and Add Another</button>
+  <button mat-button (click)="onSaveAddAnotherClick(); foreignLanguageInput.value=''; nativeLanguageInput.value=''; " cdkFocusInitial>Save and Add Another</button>
   <button mat-button (click)="onSaveClick()" cdkFocusInitial>Save</button>
 </div>

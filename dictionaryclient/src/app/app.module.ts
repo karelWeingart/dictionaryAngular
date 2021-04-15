@@ -28,6 +28,7 @@ import { WordsTableComponent } from './words-table/words-table.component';
 import { DictionaryAddDialogComponent } from './dictionary-add-dialog/dictionary-add-dialog.component';
 import {MatSelectModule} from "@angular/material/select";
 import { LessonsSelectComponent } from './lessons-select/lessons-select.component';
+import {MatPaginatorModule} from "@angular/material/paginator";
 
 
 @NgModule({
@@ -46,19 +47,20 @@ import { LessonsSelectComponent } from './lessons-select/lessons-select.componen
     DictionaryAddDialogComponent,
     LessonsSelectComponent
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule,
-    MatDialogModule,
-    MatTableModule,
-    MatFormFieldModule,
-    MatButtonModule,
-    MatInputModule,
-    MatSelectModule
-  ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        AppRoutingModule,
+        HttpClientModule,
+        FormsModule,
+        MatDialogModule,
+        MatTableModule,
+        MatFormFieldModule,
+        MatButtonModule,
+        MatInputModule,
+        MatSelectModule,
+        MatPaginatorModule
+    ],
   providers: [UserService, DictionaryService],
   bootstrap: [AppComponent],
   entryComponents: [UserAddDialogComponent]

@@ -1,0 +1,15 @@
+mat-table{
+  width: 500px;
+  margin-left:20px;
+}
+mat-table caption {
+  font-weight: bold;
+  background: #1976d2;
+  color: white;
+  width: 100%;
+}
+
+.mat-column-id {
+  flex: 0 0 10%;
+  color: lightgrey;
+}

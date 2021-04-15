@@ -1,11 +1,15 @@
 <h3>this is {{dictionary.dictionaryName}}</h3>
-<button id="renameDict" type="button" mat-raised-button (click)="1">
+<div class="buttonRow">
+  <button style="color: lightgrey;" id="renameDict" type="button" mat-raised-button (click)="1">
 Rename Dictionary</button>
 <button id="addLesson" type="button" mat-raised-button (click)="openAddLessonDialog()">
   Add Lesson</button>
 <button id="addWord" type="button" mat-raised-button (click)="openAddWordDialog()">
   Add Word</button>
-<button id="testYourself" type="button" mat-raised-button >
+<button id="testYourself" style="color: lightgrey;" type="button" mat-raised-button >
   Test Yourself!</button>
-<app-words-table #wordsTable [dictionaryId]="id"></app-words-table>
-<app-lessons-table #lessonsTable [dictionaryId]="id" (lessonsEmitter)="refreshLessons($event)" ></app-lessons-table>
+</div>
+<div style="display: flex; flex-grow: grow;">
+  <app-words-table class="float-left" #wordsTable [dictionaryId]="id"></app-words-table>
+  <app-lessons-table class="float-right" #lessonsTable [dictionaryId]="id" (lessonsEmitter)="refreshLessons($event)" ></app-lessons-table>
+</div>
