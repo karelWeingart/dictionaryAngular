@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Userdictionary } from '../model/userdictionary';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import {environment} from "../../environments/environment";
 
 
 @Injectable({
@@ -12,11 +13,12 @@ export class DictionaryService {
   private dictionariesBaseUrl: string;
   private dictionariesUrl: string;
 	private dictionaryUrl: string;
+	private baseUrl = environment.baseUrl;
 
   constructor(private http: HttpClient) {
-    this.dictionariesBaseUrl = "http://localhost:8080/dictionary/user/";
-    this.dictionaryUrl = "http://localhost:8080/dictionary/dictionary/";
-    this.dictionariesUrl = "http://localhost:8080/dictionary/dictionaries/";
+    this.dictionariesBaseUrl = this.baseUrl + "/dictionary/user/";
+    this.dictionaryUrl = this.baseUrl + "/dictionary/dictionary/";
+    this.dictionariesUrl = this.baseUrl + "/dictionary/dictionaries/";
   }
 
   public findByUserId(userId: number): Observable<Userdictionary[]> {

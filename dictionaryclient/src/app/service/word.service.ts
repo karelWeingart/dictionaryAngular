@@ -3,6 +3,7 @@ import {Observable} from "rxjs";
 import {Lesson} from "../model/lesson";
 import {Word} from "../model/word";
 import {HttpClient} from "@angular/common/http";
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +12,10 @@ export class WordService {
 
   dictWordsBaseUrl: string;
   wordsBaseUrl: string;
+  baseUrl = environment.baseUrl
   constructor(private http: HttpClient) {
-    this.dictWordsBaseUrl = "http://localhost:8080/dictionary/dictionary";
-    this.wordsBaseUrl = "http://localhost:8080/dictionary/words";
+    this.dictWordsBaseUrl = this.baseUrl + "/dictionary/dictionary";
+    this.wordsBaseUrl = this.baseUrl + "/dictionary/words";
   }
 
   public findAllByDictionary(dictId: number): Observable<Word[]> {

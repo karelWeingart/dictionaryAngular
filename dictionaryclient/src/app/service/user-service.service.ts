@@ -3,17 +3,19 @@ import { User } from '../model/user';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {Lesson} from "../model/lesson";
+import {environment} from "../../environments/environment";
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
 
 	private usersUrl: string;
 	private userUrl: string;
+	private baseUrl = environment.baseUrl;
 
 
   constructor(private http: HttpClient) {
-	this.usersUrl = 'http://localhost:8080/dictionary/users';
-	this.userUrl = 'http://localhost:8080/dictionary/user'
+	this.usersUrl = this.baseUrl + "/dictionary/users";
+	this.userUrl = this.baseUrl + "/dictionary/user";
   }
 
   public findAll(): Observable<User[]> {
