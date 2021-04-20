@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 public class LessonController {
 
     private static final Logger log = LoggerFactory.getLogger(LessonController.class);
