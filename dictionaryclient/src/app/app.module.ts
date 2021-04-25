@@ -29,6 +29,7 @@ import { DictionaryAddDialogComponent } from './dictionary-add-dialog/dictionary
 import {MatSelectModule} from "@angular/material/select";
 import { LessonsSelectComponent } from './lessons-select/lessons-select.component';
 import {MatPaginatorModule} from "@angular/material/paginator";
+import { MainComponent } from './main/main.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     LessonsTableComponent,
     WordsTableComponent,
     DictionaryAddDialogComponent,
-    LessonsSelectComponent
+    LessonsSelectComponent,
+    MainComponent
   ],
     imports: [
         BrowserModule,

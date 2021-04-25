@@ -1,6 +1,9 @@
 mat-table{
-  width: 500px;
+  width: 400px;
   margin-left:20px;
+}
+mat-table tr {
+  width: 100%;
 }
 mat-table caption {
   font-weight: bold;
@@ -9,7 +12,21 @@ mat-table caption {
   width: 100%;
 }
 
-.mat-column-id {
+#wordstable.mat-column-id {
   flex: 0 0 10%;
   color: lightgrey;
 }
+#wordstable.mat-column-foreignLanguageWord {
+  flex: 0 0 30%;
+}
+
+#wordstable.mat-column-nativeLanguageTranslation {
+  flex: 0 0 30%;
+}
+#wordstable.mat-column-lesson {
+  flex: 0 0 10%;
+}
+#wordstable.mat-column-action {
+  flex: 0 0 20%;
+}
+

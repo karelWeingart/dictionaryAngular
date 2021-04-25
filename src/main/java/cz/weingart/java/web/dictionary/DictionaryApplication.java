@@ -16,11 +16,13 @@ import cz.weingart.java.web.dictionary.user.UserRepository;
 import cz.weingart.java.web.dictionary.userdictionaries.DictionaryItemRepository;
 import cz.weingart.java.web.dictionary.userdictionaries.UserDictionary;
 import cz.weingart.java.web.dictionary.userdictionaries.UserDictionaryRepository;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @SpringBootApplication
+@EnableTransactionManagement
 public class DictionaryApplication {
 	
 	private static final Logger log = LoggerFactory.getLogger(DictionaryApplication.class);

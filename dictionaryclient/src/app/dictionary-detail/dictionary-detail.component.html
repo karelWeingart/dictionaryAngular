@@ -1,4 +1,3 @@
-<h3>this is {{dictionary.dictionaryName}}</h3>
 <div class="buttonRow">
   <button style="color: lightgrey;" id="renameDict" type="button" mat-raised-button (click)="1">
 Rename Dictionary</button>
@@ -9,7 +8,7 @@ Rename Dictionary</button>
 <button id="testYourself" style="color: lightgrey;" type="button" mat-raised-button >
   Test Yourself!</button>
 </div>
-<div style="display: flex; flex-grow: grow;">
+<div style="display: flex;">
   <app-words-table class="float-left" #wordsTable [dictionaryId]="id"></app-words-table>
   <app-lessons-table class="float-right" #lessonsTable [dictionaryId]="id" (lessonsEmitter)="refreshLessons($event)" ></app-lessons-table>
 </div>

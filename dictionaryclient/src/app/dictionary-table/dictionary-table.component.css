@@ -1,0 +1,20 @@
+table{
+  width: 400px;
+  margin-left:20px;
+}
+table caption {
+  font-weight: bold;
+  background: #1976d2;
+  color: white;
+}
+
+.mat-column-id {
+  flex: 0 0 10%;
+  color: lightgrey;
+}
+.mat-column-name {
+  flex: 0 0 60%;
+}
+.mat-column-action {
+  flex: 0 0 30%;
+}

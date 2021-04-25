@@ -4,6 +4,7 @@ import cz.weingart.java.web.dictionary.lesson.Lesson;
 import cz.weingart.java.web.dictionary.lesson.LessonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -22,11 +23,13 @@ public class DictionaryitemController {
     @Autowired
     LessonRepository lessonRepository;
 
+    @Transactional(readOnly = true)
     @GetMapping("/words")
     public Iterable<DictionaryItem> getAllWords() {
         return dictionaryItemRepository.findAll();
     }
 
+    @Transactional(readOnly = true)
     @GetMapping("/dictionary/{id}/words")
     public List<DictionaryItem> getWordsByDictionary(@PathVariable(value = "id") Long dictId) {
         Optional<UserDictionary> opt = userDictionaryRepository.findById(dictId);
@@ -38,6 +41,7 @@ public class DictionaryitemController {
 
     }
 
+    @Transactional(readOnly = true)
     @GetMapping("/lesson/{id}/words")
     public List<DictionaryItem> getWordsByLesson(@PathVariable(value = "id") Long lessonId) {
         Optional<Lesson> opt = lessonRepository.findById(lessonId);
@@ -49,6 +53,7 @@ public class DictionaryitemController {
 
     }
 
+    @Transactional(readOnly = false)
     @PostMapping("/words")
     void addWord(@RequestBody DictionaryItem word) {
         word.setDateCreated(LocalDate.now());

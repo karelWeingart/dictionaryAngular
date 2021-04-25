@@ -31,6 +31,7 @@ export class LessonsTableComponent implements OnInit {
   }
 
   refresh(): void {
+
     this.lessonService.findAllByDictionary(this.dictionaryId).subscribe(dataSource => this.dataSource=dataSource);
 
   }

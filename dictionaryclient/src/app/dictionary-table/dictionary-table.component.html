@@ -2,7 +2,7 @@
 
   <!--- Note that these columns can be defined in any order.
       The actual rendered columns are set as a property on the row definition" -->
-
+  <caption> Dictionaries </caption>
   <!-- Id Column -->
   <ng-container matColumnDef="id">
     <th mat-header-cell *matHeaderCellDef>Dictionary Id</th>
@@ -19,7 +19,7 @@
   <ng-container matColumnDef="action">
     <th mat-header-cell *matHeaderCellDef> Action </th>
     <td mat-cell *matCellDef="let element" class="action-link">
-      <a (click)="openDialog('Update',element)">Edit</a> |
+      <a (click)="openDialog('Update',element)">Edit</a> | <a (click)="delete()" style="color: lightgray;">Delete</a>
     </td>
   </ng-container>
 

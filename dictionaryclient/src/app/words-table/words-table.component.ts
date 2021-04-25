@@ -13,7 +13,8 @@ import {MatTableDataSource} from "@angular/material/table";
 })
 export class WordsTableComponent implements OnInit {
 
-  dataSource!: MatTableDataSource<Word>;
+  dataSource = new MatTableDataSource<Word>();
+  //dataSource!: Word[];
   words!: Word[];
   @Input() dictionaryId!: number;
   @ViewChild('wordsTablePaginator') paginator!: MatPaginator;
@@ -27,13 +28,16 @@ export class WordsTableComponent implements OnInit {
     this.refresh();
   }
 
-  ngAfterViewInit() {
+  /*ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
-  }
+  }*/
 
   refresh(): void {
-    this.wordService.findAllByDictionary(this.dictionaryId).subscribe(dataSource => this.words=dataSource);
-    this.dataSource = new MatTableDataSource<Word>(this.words);
-    this.changeDetectorRef.detectChanges();
+    console.log("this method happens to be entered!");
+    this.wordService.findAllByDictionary(this.dictionaryId).subscribe(source => {this.dataSource.data=source;
+    this.dataSource.paginator=this.paginator;});
+    //this.dataSource = new MatTableDataSource<Word>(this.words);
+    console.log(this.dataSource);
+    //this.changeDetectorRef.detectChanges();
   }
 }

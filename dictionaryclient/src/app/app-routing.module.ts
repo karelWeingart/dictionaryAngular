@@ -5,9 +5,10 @@ import { UserAddDialogComponent } from './user-add-dialog/user-add-dialog.compon
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { DictionaryTableComponent } from './dictionary-table/dictionary-table.component';
 import { DictionaryDetailComponent } from './dictionary-detail/dictionary-detail.component';
+import {MainComponent} from "./main/main.component";
 
 const routes: Routes = [
-  { path: 'users', component: UserTableComponent },
+  { path: 'users', component: MainComponent },
   { path: 'adduser', component: UserAddDialogComponent },
   { path: 'user/:id', component: UserDetailComponent,
     children: [

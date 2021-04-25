@@ -1,5 +1,4 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { MatTable } from '@angular/material/table';
 import { User } from '../model/user';
 import { UserService } from '../service/user-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -29,7 +28,9 @@ export class UserTableComponent implements OnInit {
 
 
 	public refresh(): void {
+    console.log("in user table");
     this.userService.findAll().subscribe(dataSource => this.dataSource=dataSource);
+    console.log(this.dataSource);
   }
 
 	public delete(user: User): void {

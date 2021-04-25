@@ -55,7 +55,9 @@ export class DictionaryDetailComponent implements OnInit {
   }
 
   refreshLessonsTable():void {
-    this.lessonsTable.refresh();
+    setTimeout(() => {
+      this.lessonsTable.refresh();
+    }, 200);
   }
 
   refreshLessons(lessonsFromTable: Lesson[]) {
@@ -64,6 +66,8 @@ export class DictionaryDetailComponent implements OnInit {
   }
 
   private refreshWordsTable() {
-    this.wordsTable.refresh();
+    setTimeout(() => {
+      this.wordsTable.refresh();
+    }, 200);
   }
 }

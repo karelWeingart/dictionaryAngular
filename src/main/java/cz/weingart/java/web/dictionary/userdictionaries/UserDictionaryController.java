@@ -4,6 +4,7 @@ import cz.weingart.java.web.dictionary.user.User;
 import cz.weingart.java.web.dictionary.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -25,6 +26,7 @@ public class UserDictionaryController {
         return (List<UserDictionary>) userDictionaryRepository.findAll();
     }
 
+    @Transactional(readOnly = true)
     @GetMapping("/user/{id}/dictionaries")
     public List<UserDictionary> getAllDictionariesForUser(@PathVariable(value = "id") Long userId) {
         Optional<User> opt = userRepository.findById(userId);
@@ -37,6 +39,7 @@ public class UserDictionaryController {
 
     }
 
+    @Transactional(readOnly = true)
     @GetMapping("/dictionary/{id}")
     public UserDictionary getDictionary(@PathVariable(value = "id") Long dictId) {
         Optional<UserDictionary> opt = userDictionaryRepository.findById(dictId);
@@ -48,6 +51,7 @@ public class UserDictionaryController {
         return null;
     }
 
+    @Transactional(readOnly = false)
     @PostMapping("/dictionaries")
     void addDictionary(@RequestBody UserDictionary dictionary) {
         System.out.println("is dictionary null "+ (dictionary == null));
@@ -61,6 +65,7 @@ public class UserDictionaryController {
 
     }
 
+    @Transactional(readOnly = false)
     @DeleteMapping("/dictionaries/{id}")
     UserDictionary deleteDictionary(@PathVariable(value = "id") Long dictionaryId) {
         Optional<UserDictionary> opt = userDictionaryRepository.findById(dictionaryId);

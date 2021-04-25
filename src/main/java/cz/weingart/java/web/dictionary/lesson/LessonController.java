@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -31,6 +32,7 @@ public class LessonController {
         return (List<Lesson>) lessonRepository.findAll();
     }
 
+    @Transactional(readOnly = true)
     @GetMapping("/dictionary/{id}/lessons")
     public List<Lesson> getAllLessonsByDictionary(@PathVariable(value = "id") Long dictId) {
         Optional<UserDictionary> opt = userDictionaryRepository.findById(dictId);
@@ -46,6 +48,7 @@ public class LessonController {
         }
     }
 
+    @Transactional(readOnly = false)
     @PostMapping("/lessons")
     void addLesson(@RequestBody Lesson lesson) {
         log.info("here we are");
