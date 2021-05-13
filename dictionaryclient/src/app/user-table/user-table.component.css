@@ -17,4 +17,9 @@ table caption {
 }
 .mat-column-action {
   flex: 0 0 30%;
+  text-align: right;
+}
+.mat-column-action mat-icon {
+  vertical-align: middle;
+  cursor: pointer;
 }

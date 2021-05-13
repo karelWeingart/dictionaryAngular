@@ -1,32 +1,48 @@
 mat-table{
-  width: 400px;
+  width: 600px;
   margin-left:20px;
 }
 mat-table tr {
   width: 100%;
 }
+mat-table th {
+  background: #D6E8FA;
+}
+
 mat-table caption {
   font-weight: bold;
   background: #1976d2;
   color: white;
-  width: 100%;
+  width: 600px;
 }
 
-#wordstable.mat-column-id {
+.mat-column-id {
   flex: 0 0 10%;
   color: lightgrey;
+  vertical-align: middle;
 }
-#wordstable.mat-column-foreignLanguageWord {
-  flex: 0 0 30%;
+.mat-column-foreignLanguageWord {
+  flex: 0 0 35%;
+  font-weight: bolder;
+  vertical-align: middle;
 }
 
-#wordstable.mat-column-nativeLanguageTranslation {
-  flex: 0 0 30%;
+.mat-column-nativeLanguageTranslation {
+  flex: 0 0 35%;
+  font-weight: bolder;
+  vertical-align: middle;
 }
-#wordstable.mat-column-lesson {
-  flex: 0 0 10%;
-}
-#wordstable.mat-column-action {
+.mat-column-lesson {
   flex: 0 0 20%;
+  vertical-align: middle;
+}
+.mat-column-action {
+  flex: 0 0 10%;
+  text-align: right;
+  vertical-align: middle;
+}
+.mat-column-action mat-icon {
+  vertical-align: middle;
+  cursor: pointer;
 }
 

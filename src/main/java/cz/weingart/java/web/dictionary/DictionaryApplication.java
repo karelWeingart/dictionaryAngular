@@ -63,9 +63,7 @@ public class DictionaryApplication {
 	        
 	      }
 	      log.info("");*/
-	      dictRepository.deleteAll();
-	      repository.deleteAll();
-	      
+
 	    };
 	    
 	    

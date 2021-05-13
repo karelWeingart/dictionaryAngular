@@ -5,6 +5,10 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {WordService} from "../service/word.service";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatTableDataSource} from "@angular/material/table";
+import {WindowRefService} from "../service/window-ref.service";
+import {MatIcon} from "@angular/material/icon";
+
+
 
 @Component({
   selector: 'app-words-table',
@@ -14,6 +18,7 @@ import {MatTableDataSource} from "@angular/material/table";
 export class WordsTableComponent implements OnInit {
 
   dataSource = new MatTableDataSource<Word>();
+  window: any;
   //dataSource!: Word[];
   words!: Word[];
   @Input() dictionaryId!: number;
@@ -22,7 +27,16 @@ export class WordsTableComponent implements OnInit {
   constructor(private changeDetectorRef: ChangeDetectorRef,
               private route: ActivatedRoute,
               private router: Router,
-              private wordService: WordService) { }
+              private wordService: WordService,
+              private windowRefService: WindowRefService
+              ) {
+    this.window = windowRefService.nativeWindow;
+  }
+
+  public playIt(element: any): void {
+    this.windowRefService.nativeWindow.responsiveVoice.speak(element.foreignLanguageWord)
+  }
+
 
   ngOnInit(): void {
     this.refresh();

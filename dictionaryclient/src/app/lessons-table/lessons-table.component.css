@@ -7,6 +7,9 @@ table caption {
   background: #1976d2;
   color: white;
 }
+table th {
+  background: #D6E8FA;
+}
 
 .mat-column-id {
   flex: 0 0 10%;
@@ -17,4 +20,12 @@ table caption {
 }
 .mat-column-action {
   flex: 0 0 30%;
+}
+.mat-column-action {
+  flex: 0 0 30%;
+  text-align: right;
+}
+.mat-column-action mat-icon {
+  vertical-align: middle;
+  cursor: pointer;
 }

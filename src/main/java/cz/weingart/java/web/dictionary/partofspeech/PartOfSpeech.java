@@ -15,7 +15,7 @@ import javax.persistence.Table;
 import cz.weingart.java.web.dictionary.userdictionaries.DictionaryItem;
 
 @Entity
-@Table(name="part_of_speech")
+@Table(name= "part_of_speech")
 public class PartOfSpeech {
 	
 	@Id	

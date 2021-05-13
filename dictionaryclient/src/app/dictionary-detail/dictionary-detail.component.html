@@ -5,8 +5,10 @@ Rename Dictionary</button>
   Add Lesson</button>
 <button id="addWord" type="button" mat-raised-button (click)="openAddWordDialog()">
   Add Word</button>
-<button id="testYourself" style="color: lightgrey;" type="button" mat-raised-button >
-  Test Yourself!</button>
+<button id="testYourself" type="button" mat-raised-button (click)="openVocabularyTestDialog()">
+  Test Your Vocabulary </button>
+  <button id="listenAndGuess" type="button" mat-raised-button (click)="openListeningTestDialog()">
+    Listen & Guess </button>
 </div>
 <div style="display: flex;">
   <app-words-table class="float-left" #wordsTable [dictionaryId]="id"></app-words-table>

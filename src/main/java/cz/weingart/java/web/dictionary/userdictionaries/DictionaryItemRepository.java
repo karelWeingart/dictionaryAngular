@@ -9,9 +9,9 @@ import cz.weingart.java.web.dictionary.partofspeech.PartOfSpeech;
 
 public interface DictionaryItemRepository extends CrudRepository<DictionaryItem, Long>{
 	
-	public List<DictionaryItem> findDictionaryItemsByDictionary(UserDictionary dictionary);
-	public List<DictionaryItem> findDictioaryItemsByDictionaryAndLesson(UserDictionary dictionary, Lesson lesson);
-	public List<DictionaryItem> findDictioaryItemsByDictionaryAndPartOfSpeech(UserDictionary dictionary, PartOfSpeech partOfSpeech);
+	public List<DictionaryItem> findDictionaryItemsByUserDictionary(UserDictionary userDictionary);
+	public List<DictionaryItem> findDictioaryItemsByUserDictionaryAndLesson(UserDictionary userDictionary, Lesson lesson);
+	public List<DictionaryItem> findDictioaryItemsByUserDictionaryAndPartOfSpeech(UserDictionary userDictionary, PartOfSpeech partOfSpeech);
 	public List<DictionaryItem> findDictionaryItemsByLesson(Lesson lesson);
 	
 }

@@ -2,22 +2,17 @@ package cz.weingart.java.web.dictionary.user;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import cz.weingart.java.web.dictionary.userdictionaries.UserDictionary;
 
 @Entity
-@Table(name="users")
+@Table(name="USERS")
 public class User {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(columnDefinition = "integer auto_increment")
 	private Long id;
 	private String userName;
 	
@@ -25,16 +20,15 @@ public class User {
 	List<UserDictionary> userDictionaries;
 	
 	protected User() {
-		
+	}
+
+	public User(User user) {
+		this.userName = user.userName;
+		this.id = user.id;
 	}
 	
 	public User(String username) {
 		this.userName = username;
-	}
-	
-	public User(User user) {
-		this.userName = user.userName;
-		this.id = user.id;
 	}
 	
 	public Long getId() {
@@ -55,7 +49,6 @@ public class User {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	
 
 	public List<UserDictionary> getUserDictionaries() {
 		return userDictionaries;
@@ -67,7 +60,8 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", userName=" + userName + "]";
+		return "User [id=" + id
+				+ ", userName=" + userName + "]";
 	}
 
 	

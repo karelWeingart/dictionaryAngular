@@ -10,7 +10,7 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { MatButtonModule } from "@angular/material/button";
 
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserService } from './service/user-service.service';
@@ -30,6 +30,12 @@ import {MatSelectModule} from "@angular/material/select";
 import { LessonsSelectComponent } from './lessons-select/lessons-select.component';
 import {MatPaginatorModule} from "@angular/material/paginator";
 import { MainComponent } from './main/main.component';
+import { TestItDialogComponent } from './test-it-dialog/test-it-dialog.component';
+import { SelectLessonsComponent } from './select-lessons/select-lessons.component';
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
+import { MatCardModule} from "@angular/material/card";
+import {WindowRefService} from "./service/window-ref.service";
+import {MatIconModule} from "@angular/material/icon";
 
 
 @NgModule({
@@ -47,23 +53,30 @@ import { MainComponent } from './main/main.component';
     WordsTableComponent,
     DictionaryAddDialogComponent,
     LessonsSelectComponent,
-    MainComponent
+    MainComponent,
+    TestItDialogComponent,
+    SelectLessonsComponent
   ],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        AppRoutingModule,
-        HttpClientModule,
-        FormsModule,
-        MatDialogModule,
-        MatTableModule,
-        MatFormFieldModule,
-        MatButtonModule,
-        MatInputModule,
-        MatSelectModule,
-        MatPaginatorModule
-    ],
-  providers: [UserService, DictionaryService],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    MatDialogModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    MatInputModule,
+    MatSelectModule,
+    MatPaginatorModule,
+    ReactiveFormsModule,
+    MatAutocompleteModule,
+    MatCardModule,
+    MatIconModule
+
+  ],
+  providers: [UserService, DictionaryService, WindowRefService],
   bootstrap: [AppComponent],
   entryComponents: [UserAddDialogComponent]
 })

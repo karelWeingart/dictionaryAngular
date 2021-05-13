@@ -1,0 +1,11 @@
+<!-- form class="lessons-form" [formControl]="control" -->
+  <input matInput #lessonsAutoCompleteInput type="text"
+         placeholder="Choose a lesson"
+         [formControl]="control"
+         [matAutocomplete]="auto">
+  <mat-autocomplete #auto="matAutocomplete" >
+    <mat-option (click)="setChosenLesson(lesson)" *ngFor="let lesson of filteredLessons | async" [value]="lesson.lessonName" [id]="lesson.id.toString()" >
+      {{lesson.lessonName}}
+    </mat-option>
+  </mat-autocomplete>
+<!-- /form -->

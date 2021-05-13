@@ -1,6 +1,5 @@
 package cz.weingart.java.web.dictionary.lesson;
 
-import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,13 +7,11 @@ import java.util.List;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonIgnoreType;
 import cz.weingart.java.web.dictionary.userdictionaries.DictionaryItem;
 import cz.weingart.java.web.dictionary.userdictionaries.UserDictionary;
 
 @Entity
-@Table(name="lesson")
+@Table(name= "lesson")
 public class Lesson {
 	
 	@Id	
@@ -34,6 +31,9 @@ public class Lesson {
 	@Column(name = "date_created", columnDefinition = "DATE")
 	private LocalDate dateCreated;
 
+	protected Lesson() {
+	}
+
 	public LocalDate getDateCreated() {
 		return dateCreated;
 	}
@@ -41,8 +41,6 @@ public class Lesson {
 	public void setDateCreated(LocalDate dateCreated) {
 		this.dateCreated = dateCreated;
 	}
-
-
 
 	public void setDictionary(UserDictionary dictionary) {
 		this.dictionary = dictionary;
@@ -52,15 +50,10 @@ public class Lesson {
 		return dictionary;
 	}
 
-
-	
-	protected Lesson() {
-		
-	}
-
 	public Lesson(String lesson) {
 		this.lessonName = lesson;
 	}
+
 	public Long getId() {
 		return id;
 	}
@@ -87,6 +80,8 @@ public class Lesson {
 
 	@Override
 	public String toString() {
-		return "Lesson [id=" + id + ", lessonName=" + lessonName + ", dictionaryItems=" + dictionaryItems + ", dictionary="+ dictionary +"]";
+		return "Lesson [id=" + id + ", lessonName="
+				+ lessonName + ", dictionaryItems="
+				+ dictionaryItems + ", dictionary="+ dictionary +"]";
 	}
 }

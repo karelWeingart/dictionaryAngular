@@ -5,6 +5,6 @@ export class Word {
   id!: number;
   foreignLanguageWord!: string;
   nativeLanguageTranslation!: string;
-  dictionary!: Userdictionary;
+  userDictionary!: Userdictionary;
   lesson!: Lesson;
 }

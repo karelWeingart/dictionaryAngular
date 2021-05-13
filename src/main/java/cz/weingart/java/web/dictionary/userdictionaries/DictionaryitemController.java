@@ -34,7 +34,7 @@ public class DictionaryitemController {
     public List<DictionaryItem> getWordsByDictionary(@PathVariable(value = "id") Long dictId) {
         Optional<UserDictionary> opt = userDictionaryRepository.findById(dictId);
         if (opt.isPresent())  {
-            return dictionaryItemRepository.findDictionaryItemsByDictionary(opt.get());
+            return dictionaryItemRepository.findDictionaryItemsByUserDictionary(opt.get());
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "invalid dictionary id");
         }

@@ -1,0 +1,16 @@
+<h2 mat-dialog-title style="background-color: #1976d2; color: white; text-align: center">Test Your Vocabulary!</h2>
+<app-select-lessons [lessons]="data.lessons" #lessonsSelect ></app-select-lessons>
+<mat-card-subtitle class="mat-elevation-z2" style="float:left; width: 39%;height: 55%"><p>{{testItRequest.toBeTranslated}}</p></mat-card-subtitle>
+<mat-card-subtitle class="mat-elevation-z2" style="float:left; width: 39%;height: 55%"><p>You said {{testItRequest.usersLastAnswer}} and it should be {{testItRequest.lastCorrectAnswer}} which is {{testItRequest.answerStatus}}.</p></mat-card-subtitle>
+<mat-card-subtitle class="mat-elevation-z2" style="float:left; width: 19%;height: 55%">
+  <p style="color: cadetblue">Total: {{testItRequest.total}}</p>
+  <p style="color: cornflowerblue">Correct: {{testItRequest.correct}}</p>
+  <p style="color: firebrick">Failed: {{testItRequest.failed}}</p>
+</mat-card-subtitle>
+<div style="height:55%">.</div>
+<mat-label >Your answer:</mat-label>
+<input matInput #answer>
+<div mat-dialog-actions style="background-color: #D6E8FA; color: black; text-align: center">
+  <button mat-button (click)="onCancelClick()">Stop</button>
+  <button #sendItButton mat-button (click)="startIt($event.target);" cdkFocusInitial>Start It!</button>
+</div>

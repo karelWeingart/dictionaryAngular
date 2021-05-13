@@ -33,7 +33,7 @@ export class WordAddDialogComponent implements OnInit {
     lessonId = this.lessonsSelect.getSelectedValue();
     let selectedLesson = this.data.lessons.filter((x: { id: number; }) => x.id == lessonId)[0];
     this.word.lesson = selectedLesson;
-    this.word.dictionary = this.data.dictionary;
+    this.word.userDictionary = this.data.dictionary;
     this.wordsService.save(this.word).subscribe(result => this.updateWordTable());
     this.dialogRef.close();
   }
@@ -44,7 +44,7 @@ export class WordAddDialogComponent implements OnInit {
     lessonId = this.lessonsSelect.getSelectedValue();
     let selectedLesson = this.data.lessons.filter((x: { id: number; }) => x.id == lessonId)[0];
     this.word.lesson = selectedLesson;
-    this.word.dictionary = this.data.dictionary;
+    this.word.userDictionary = this.data.dictionary;
     this.wordsService.save(this.word).subscribe(result => this.updateWordTable());
 
 

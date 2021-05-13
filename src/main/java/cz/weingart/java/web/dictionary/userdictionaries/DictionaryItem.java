@@ -4,6 +4,7 @@ import javax.persistence.*;
 
 import cz.weingart.java.web.dictionary.lesson.Lesson;
 import cz.weingart.java.web.dictionary.partofspeech.PartOfSpeech;
+import org.hibernate.annotations.Type;
 
 import java.time.LocalDate;
 
@@ -14,9 +15,11 @@ public class DictionaryItem {
 	@Id	
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
-	
+
+	@Type(type="text")
 	private String foreignLanguageWord;
-	
+
+	@Type(type="text")
 	private String nativeLanguageTranslation;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -31,9 +34,9 @@ public class DictionaryItem {
 	@JoinColumn(name = "partofspeech_id")
 	private PartOfSpeech partOfSpeech;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	/*@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="dictionary_id")
-	private UserDictionary dictionary;
+	private UserDictionary dictionary;*/
 
 	@Column(name = "date_created", columnDefinition = "DATE")
 	private LocalDate dateCreated;
@@ -101,11 +104,11 @@ public class DictionaryItem {
 				+ ", lesson=" + lesson + ", partOfSpeech=" + partOfSpeech + "]";
 	}
 
-	public UserDictionary getDictionary() {
+	/*public UserDictionary getDictionary() {
 		return dictionary;
 	}
 
 	public void setDictionary(UserDictionary dictionary) {
 		this.dictionary = dictionary;
-	}
+	}*/
 }
