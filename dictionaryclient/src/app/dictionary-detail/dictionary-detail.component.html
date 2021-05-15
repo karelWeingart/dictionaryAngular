@@ -1,4 +1,4 @@
-<div class="buttonRow">
+<div class="buttonRow" >
   <button style="color: lightgrey;" id="renameDict" type="button" mat-raised-button (click)="1">
 Rename Dictionary</button>
 <button id="addLesson" type="button" mat-raised-button (click)="openAddLessonDialog()">
@@ -11,6 +11,6 @@ Rename Dictionary</button>
     Listen & Guess </button>
 </div>
 <div style="display: flex;">
-  <app-words-table class="float-left" #wordsTable [dictionaryId]="id"></app-words-table>
-  <app-lessons-table class="float-right" #lessonsTable [dictionaryId]="id" (lessonsEmitter)="refreshLessons($event)" ></app-lessons-table>
+  <app-words-table class="float-left" #wordsTable [dictionaryId]="id" [filteringLessonName]="filteringLessonName"></app-words-table>
+  <app-lessons-table class="float-right" #lessonsTable [dictionaryId]="id" (lessonNameEmitter)="setFilteringLessonName($event)" (lessonsEmitter)="refreshLessons($event)" ></app-lessons-table>
 </div>

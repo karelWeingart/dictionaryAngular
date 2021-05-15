@@ -19,9 +19,9 @@ export class WordsTableComponent implements OnInit {
 
   dataSource = new MatTableDataSource<Word>();
   window: any;
-  //dataSource!: Word[];
   words!: Word[];
   @Input() dictionaryId!: number;
+  @Input() filteringLessonName!: string;
   @ViewChild('wordsTablePaginator') paginator!: MatPaginator;
   displayedColumns: string[] = ['id', 'foreignLanguageWord', 'nativeLanguageTranslation', 'lesson', 'action'];
   constructor(private changeDetectorRef: ChangeDetectorRef,
@@ -31,27 +31,35 @@ export class WordsTableComponent implements OnInit {
               private windowRefService: WindowRefService
               ) {
     this.window = windowRefService.nativeWindow;
+
   }
 
   public playIt(element: any): void {
     this.windowRefService.nativeWindow.responsiveVoice.speak(element.foreignLanguageWord)
   }
 
-
-  ngOnInit(): void {
-    this.refresh();
+  ngOnChanges() {
+    console.log("dssssdfadfa");
+    console.log(this.filteringLessonName);
+    this.refresh(this.filteringLessonName);
   }
 
-  /*ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-  }*/
 
-  refresh(): void {
-    console.log("this method happens to be entered!");
+  ngOnInit(): void {
+    this.dataSource.filterPredicate = function (dataSource, filter: string): boolean {
+      return dataSource.lesson.lessonName.startsWith(filter);
+    };
+    this.refresh(this.filteringLessonName);
+
+  }
+
+  ngAfterViewInit() {
+    this.dataSource.paginator=this.paginator;
+  }
+  refresh(filter: string): void {
     this.wordService.findAllByDictionary(this.dictionaryId).subscribe(source => {this.dataSource.data=source;
-    this.dataSource.paginator=this.paginator;});
-    //this.dataSource = new MatTableDataSource<Word>(this.words);
-    console.log(this.dataSource);
-    //this.changeDetectorRef.detectChanges();
+    });
+
+    this.dataSource.filter = filter;
   }
 }

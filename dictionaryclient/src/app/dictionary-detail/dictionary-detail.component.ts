@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, Input, OnInit, SimpleChanges, ViewChild} from '@angular/core';
 import {Userdictionary} from "../model/userdictionary";
 import {ActivatedRoute, ParamMap, Router} from "@angular/router";
 import {DictionaryService} from "../service/dictionary.service";
@@ -22,6 +22,7 @@ export class DictionaryDetailComponent implements OnInit {
   lessons!: Lesson[];
   @ViewChild('lessonsTable') lessonsTable!: LessonsTableComponent;
   @ViewChild('wordsTable') wordsTable!: WordsTableComponent;
+  @Input() filteringLessonName!: string;
 
   constructor(private dictionaryService: DictionaryService,
               private route: ActivatedRoute,
@@ -33,6 +34,14 @@ export class DictionaryDetailComponent implements OnInit {
       this.id = Number(params.get('id'));
     });
     this.dictionaryService.findById(this.id).subscribe(dictionary => this.dictionary=dictionary);
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log("shithappens");
+    console.log(changes.filteringLessonName.currentValue);
+    // You can also use categoryId.previousValue and
+    // categoryId.firstChange for comparing old and new values
+
   }
 
   openAddLessonDialog():void {
@@ -68,7 +77,7 @@ export class DictionaryDetailComponent implements OnInit {
 
   private refreshWordsTable() {
     setTimeout(() => {
-      this.wordsTable.refresh();
+      this.wordsTable.refresh("");
     }, 200);
   }
 
@@ -92,5 +101,11 @@ export class DictionaryDetailComponent implements OnInit {
         lessons: this.lessons,
       }
     })
+  }
+
+  setFilteringLessonName(filteringLessonName: string) {
+    console.log("mmmmmmmmmmmmmmmmmmmmmmmmmmm");
+    console.log(filteringLessonName);
+    this.filteringLessonName = filteringLessonName;
   }
 }
