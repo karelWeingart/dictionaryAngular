@@ -13,7 +13,7 @@ import {TestItRequestType} from "../model/test-it-request-type.enum";
   templateUrl: './test-it-dialog.component.html',
   styleUrls: ['./test-it-dialog.component.css']
 })
-export class TestItDialogComponent implements OnInit {
+export class TestListeningDialogComponent implements OnInit {
 
   @ViewChild('lessonsSelect') lessonsSelect!: SelectLessonsComponent;
   @ViewChild('sendItButton') sendItButton!: MatButton;
@@ -22,13 +22,13 @@ export class TestItDialogComponent implements OnInit {
   started: boolean;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
-              public dialogRef: MatDialogRef<TestItDialogComponent>,
+              public dialogRef: MatDialogRef<TestListeningDialogComponent>,
               private route: ActivatedRoute,
               private router: Router,
               private testItService: TestItServiceService,
               private changeDetectorRef: ChangeDetectorRef) {
     this.started = false;
-    this.testItRequest = new TestItModelRequest(-1, this.data.dictionary, TestItRequestType.Vocabulary);
+    this.testItRequest = new TestItModelRequest(-1, this.data.dictionary, TestItRequestType.Listening);
   }
 
   ngOnInit(): void {
@@ -40,13 +40,13 @@ export class TestItDialogComponent implements OnInit {
 
   startIt(element: any) {
 
-      console.log(this.answerInput.nativeElement.value);
-      this.testItRequest.lesson = this.lessonsSelect.selectedLesson;
-      this.testItRequest.translationAttempt = this.answerInput.nativeElement.value;
-      element.textContent = 'Send It';
-      this.testItService.checkAndGetNew(this.testItRequest).subscribe(result => this.testItRequest = result);
-      this.changeDetectorRef.detectChanges();
-      console.log(this.testItRequest.toBeTranslated);
+    console.log(this.answerInput.nativeElement.value);
+    this.testItRequest.lesson = this.lessonsSelect.selectedLesson;
+    this.testItRequest.translationAttempt = this.answerInput.nativeElement.value;
+    element.textContent = 'Send It';
+    this.testItService.checkAndGetNew(this.testItRequest).subscribe(result => this.testItRequest = result);
+    this.changeDetectorRef.detectChanges();
+    console.log(this.testItRequest.toBeTranslated);
 
   }
   renderData(): void{

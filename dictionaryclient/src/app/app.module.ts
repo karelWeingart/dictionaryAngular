@@ -36,6 +36,7 @@ import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import { MatCardModule} from "@angular/material/card";
 import {WindowRefService} from "./service/window-ref.service";
 import {MatIconModule} from "@angular/material/icon";
+import { TestListeningDialogComponent } from './test-listening-dialog/test-listening-dialog.component';
 
 
 @NgModule({
@@ -55,7 +56,8 @@ import {MatIconModule} from "@angular/material/icon";
     LessonsSelectComponent,
     MainComponent,
     TestItDialogComponent,
-    SelectLessonsComponent
+    SelectLessonsComponent,
+    TestListeningDialogComponent
   ],
   imports: [
     BrowserModule,

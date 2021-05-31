@@ -22,38 +22,22 @@ public class TestItController {
     private static final Logger log = LoggerFactory.getLogger(TestItController.class);
 
     @Autowired
-    private DictionaryItemRepository dictionaryItemRepository;
-
-    Map<Long,List<DictionaryItem>> testedWords = new HashMap<>();
+    private TestItService testItService;
 
     @Transactional(readOnly = false)
     @PostMapping("/testit")
     TestItRequest checkItAndContinue(@RequestBody TestItRequest request) {
 
         List<DictionaryItem> words;
-        Long testId;
+
         if (request.getTestId() == -1) {
-            //generate testId
-            request.setTestId(new Random().nextLong());
-            List<DictionaryItem> wordsForTestId = new ArrayList<>();
-            testedWords.put(request.getTestId(), wordsForTestId);
+            request.setTestId(testItService.initRequest());
         }
-        testId =request.getTestId();
-
-        if (request.getLesson() == null) {
-            words = dictionaryItemRepository.findDictionaryItemsByUserDictionary(request.getDictionary());
-        } else {
-            words = dictionaryItemRepository.findDictioaryItemsByUserDictionaryAndLesson(request.getDictionary(), request.getLesson());
-        }
-        if (testedWords.get(testId) != null) {
-            words.removeAll(testedWords.get(testId));
-        }
-
-        DictionaryItem chosenNewWord = getRandomWord(words);
-        //testedWords.get(testId).add(chosenNewWord);
+        words = testItService.findWordsForTest(request);
+        DictionaryItem chosenNewWord = testItService.getRandomWord(words);
 
         if (request.getWordId() != null ) {
-            checkAnswer(request);
+            testItService.checkAnswer(request);
         }
         request.setWordId(chosenNewWord.getId());
         request.setToBeTranslated(chosenNewWord.getNativeLanguageTranslation());
@@ -62,33 +46,5 @@ public class TestItController {
         return request;
     }
 
-    private void checkAnswer(TestItRequest request) {
-        Optional<DictionaryItem> opt = dictionaryItemRepository.findById(request.getWordId());
-        DictionaryItem word = null;
-        if (opt.isPresent()) {
-            word = opt.get();
-        }
-        String[] parsedAnswers = request.getTranslationAttempt().split(",",-1);
-        for (String answer : parsedAnswers) {
-            if (answer.trim().equalsIgnoreCase(word.getForeignLanguageWord())) {
-                request.setCorrect(request.getCorrect() == null ? 1 : request.getCorrect() + 1);
-                request.setTotal(request.getTotal() == null ? 1 : request.getTotal() + 1);
-                request.setLastCorrectAnswer(word.getForeignLanguageWord());
-                request.setUsersLastAnswer(request.getTranslationAttempt());
-                request.setTranslationAttempt(null);
-                return;
-            }
-        }
-        request.setFailed(request.getFailed() == null ? 1 : request.getFailed() + 1);
-        request.setTotal(request.getTotal() == null ? 1 : request.getTotal() + 1);
-        request.setLastCorrectAnswer(word.getForeignLanguageWord());
-        request.setUsersLastAnswer(request.getTranslationAttempt());
-        request.setTranslationAttempt(null);
 
-    }
-
-    private DictionaryItem getRandomWord(List<DictionaryItem> words) {
-        Random rand = new Random();
-        return words.get(rand.nextInt(words.size() - 1));
-    }
 }

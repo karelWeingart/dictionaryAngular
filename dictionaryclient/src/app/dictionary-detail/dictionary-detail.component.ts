@@ -9,6 +9,7 @@ import {WordsTableComponent} from "../words-table/words-table.component";
 import {Lesson} from "../model/lesson";
 import {WordAddDialogComponent} from "../word-add-dialog/word-add-dialog.component";
 import {TestItDialogComponent} from "../test-it-dialog/test-it-dialog.component";
+import {TestListeningDialogComponent} from "../test-listening-dialog/test-listening-dialog.component";
 
 @Component({
   selector: 'app-dictionary-detail',
@@ -93,7 +94,7 @@ export class DictionaryDetailComponent implements OnInit {
   }
 
   public openListeningTestDialog() {
-    const dialogRef = this.dialog.open(TestItDialogComponent, {
+    const dialogRef = this.dialog.open(TestListeningDialogComponent, {
       width: '600px',
       height: '400px',
       data: {
@@ -104,8 +105,6 @@ export class DictionaryDetailComponent implements OnInit {
   }
 
   setFilteringLessonName(filteringLessonName: string) {
-    console.log("mmmmmmmmmmmmmmmmmmmmmmmmmmm");
-    console.log(filteringLessonName);
     this.filteringLessonName = filteringLessonName;
   }
 }

@@ -2,6 +2,7 @@ package cz.weingart.java.web.dictionary.testit;
 
 import cz.weingart.java.web.dictionary.lesson.Lesson;
 import cz.weingart.java.web.dictionary.userdictionaries.UserDictionary;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class TestItRequest {
 
@@ -17,14 +18,14 @@ public class TestItRequest {
     Long total;
     Long failed;
     Long correct;
-    String answerStatus;
+    TestType testType;
 
-    public String getAnswerStatus() {
-        return answerStatus;
+    public TestType getTestType() {
+        return testType;
     }
 
-    public void setAnswerStatus(String answerStatus) {
-        this.answerStatus = answerStatus;
+    public void setTestType(TestType testType) {
+        this.testType = testType;
     }
 
     public Long getTestId() {
