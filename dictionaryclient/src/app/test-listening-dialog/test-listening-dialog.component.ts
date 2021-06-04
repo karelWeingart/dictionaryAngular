@@ -6,12 +6,13 @@ import {SelectLessonsComponent} from "../select-lessons/select-lessons.component
 import {TestItModelRequest} from "../model/test-it-model-request";
 import {MatButton} from "@angular/material/button";
 import {TestItRequestType} from "../model/test-it-request-type.enum";
+import {WindowRefService} from "../service/window-ref.service";
 
 
 @Component({
-  selector: 'app-test-it-dialog',
-  templateUrl: './test-it-dialog.component.html',
-  styleUrls: ['./test-it-dialog.component.css']
+  selector: 'app-test-listening-dialog',
+  templateUrl: './test-listening-dialog.component.html',
+  styleUrls: ['./test-listening-dialog.component.css']
 })
 export class TestListeningDialogComponent implements OnInit {
 
@@ -26,7 +27,8 @@ export class TestListeningDialogComponent implements OnInit {
               private route: ActivatedRoute,
               private router: Router,
               private testItService: TestItServiceService,
-              private changeDetectorRef: ChangeDetectorRef) {
+              private changeDetectorRef: ChangeDetectorRef,
+              private windowRefService: WindowRefService) {
     this.started = false;
     this.testItRequest = new TestItModelRequest(-1, this.data.dictionary, TestItRequestType.Listening);
   }
@@ -51,5 +53,9 @@ export class TestListeningDialogComponent implements OnInit {
   }
   renderData(): void{
 
+  }
+
+  public playIt(text: string): void {
+    this.windowRefService.nativeWindow.responsiveVoice.speak(text,'UK English Male', {rate: 0.7})
   }
 }
