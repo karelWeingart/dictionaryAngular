@@ -11,7 +11,7 @@ import { DOCUMENT } from '@angular/common';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'small dictionary manager app';
+
   @ViewChild('usersTable') usersTable!: UserTableComponent;
   reloaded: boolean
   constructor(public dialog: MatDialog,
@@ -31,6 +31,10 @@ export class AppComponent {
     this.setResponsiveVoiceKey(environment.responsiveVoiceKey);
   }
 
+  /*this method is used to externalize the setup of responsivevoice.js.
+  a variable responsiveVoiceKey must be created in ../environments/environment.ts
+  (and all other env files(prod, uat etc)) to make the vocalization working
+   */
   setResponsiveVoiceKey(key: string) {
     const tag = this.doc.createElement("script");
     tag.setAttribute("src","https://code.responsivevoice.org/responsivevoice.js?key="+key);

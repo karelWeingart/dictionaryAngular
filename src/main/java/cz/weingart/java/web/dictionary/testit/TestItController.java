@@ -40,7 +40,7 @@ public class TestItController {
             testItService.checkAnswer(request);
         }
         request.setWordId(chosenNewWord.getId());
-        request.setToBeTranslated(chosenNewWord.getNativeLanguageTranslation());
+        request.setToBeTranslated(chosenNewWord.getForeignLanguageWord());
 
 
         return request;

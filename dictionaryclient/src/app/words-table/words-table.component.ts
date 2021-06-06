@@ -35,7 +35,7 @@ export class WordsTableComponent implements OnInit {
   }
 
   public playIt(element: any): void {
-    this.windowRefService.nativeWindow.responsiveVoice.speak(element.foreignLanguageWord,'UK English Male', {rate: 0.7})
+    this.windowRefService.nativeWindow.responsiveVoice.speak(element.foreignLanguageWord,'UK English Female', {rate: 0.7})
   }
 
   ngOnChanges() {

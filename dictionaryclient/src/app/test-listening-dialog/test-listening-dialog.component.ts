@@ -37,7 +37,6 @@ export class TestListeningDialogComponent implements OnInit {
   }
 
   onCancelClick() {
-
   }
 
   startIt(element: any) {
@@ -47,15 +46,13 @@ export class TestListeningDialogComponent implements OnInit {
     this.testItRequest.translationAttempt = this.answerInput.nativeElement.value;
     element.textContent = 'Send It';
     this.testItService.checkAndGetNew(this.testItRequest).subscribe(result => this.testItRequest = result);
+    console.log(this.testItRequest);
     this.changeDetectorRef.detectChanges();
     console.log(this.testItRequest.toBeTranslated);
 
   }
-  renderData(): void{
-
-  }
 
   public playIt(text: string): void {
-    this.windowRefService.nativeWindow.responsiveVoice.speak(text,'UK English Male', {rate: 0.7})
+    this.windowRefService.nativeWindow.responsiveVoice.speak(text,'UK English Female', {rate: 0.7})
   }
 }
