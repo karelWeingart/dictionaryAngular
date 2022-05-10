@@ -33,13 +33,10 @@ jobs:
           sudo apt-get install nodejs
           npm install -g @angular/cli
           npm install -g --save-dev @angular-devkit/build-angular
-          npm install -g --save-dev @angular-devkit/build-angular:browser
-      
-      # Runs frontend app build
-      - name: Run frontend app build
-        run: |
           cd dictionaryclient
           ng build --verbose
+          
+     
       
       # Runs backend app build
       - name: Run backend app build
