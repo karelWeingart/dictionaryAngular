@@ -28,9 +28,9 @@ jobs:
       # Installs Angular and Node.js
       - name: Installation of Angular
         run: |
-          apt-get install software-properties-common
-          curl -sL https://deb.nodesource.com/setup_12.x | bash -
-          apt-get install nodejs
+          sudo apt-get install software-properties-common
+          curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+          sudo apt-get install nodejs
           npm install -g @angular/cli
       # Runs a single command using the runners shell
       - name: Run a one-line script
