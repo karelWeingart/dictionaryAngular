@@ -24,7 +24,14 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
-
+      
+      # Installs Angular and Node.js
+      - name: Installation of Angular
+        run: |
+          apt-get install software-properties-common
+          curl -sL https://deb.nodesource.com/setup_12.x | bash -
+          apt-get install nodejs
+          npm install -g @angular/cli
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: mvn clean install -DskipTests
