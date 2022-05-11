@@ -28,6 +28,8 @@ jobs:
       # Installs Angular and Node.js
       - name: Installation of Angular
         run: |
+          echo $GITHUB_ACTION_REPOSITORY
+          
           sudo apt-get install software-properties-common
           curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
           sudo apt-get install nodejs
