@@ -16,10 +16,10 @@ public class DictionaryItem {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 
-	@Type(type="text")
+	@Type(type="org.hibernate.type.TextType")
 	private String foreignLanguageWord;
 
-	@Type(type="text")
+	@Type(type="org.hibernate.type.TextType")
 	private String nativeLanguageTranslation;
 	
 	@ManyToOne(fetch = FetchType.LAZY)

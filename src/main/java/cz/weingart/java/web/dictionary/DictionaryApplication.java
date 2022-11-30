@@ -19,7 +19,7 @@ import cz.weingart.java.web.dictionary.userdictionaries.UserDictionaryRepository
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+
 
 @SpringBootApplication
 @EnableTransactionManagement
@@ -70,7 +70,7 @@ public class DictionaryApplication {
 	
 	}
 
-	@Bean
+	/*@Bean
 	public WebMvcConfigurer corsConfigurer() {
 		return new WebMvcConfigurerAdapter() {
 			@Override
@@ -78,6 +78,6 @@ public class DictionaryApplication {
 				registry.addMapping("/**").allowedOrigins("http://localhost:4200", "http://localhost", "192.168.*");
 			}
 		};
-	}
+	}*/
 
 }
